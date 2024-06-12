@@ -10,13 +10,9 @@ resource "opsgenie_escalation" "this" {
     notify_type = try(var.escalation.rule.notify_type, "default")
     delay       = try(var.escalation.rule.delay, 0)
 
-    dynamic "recipient" {
-      for_each = try(var.escalation.rule.recipients, [])
-
-      content {
-        id   = recipient.value.id
-        type = recipient.value.type
-      }
+    recipient {
+      type = recipient.value.type
+      id   = recipient.value.id
     }
   }
 
