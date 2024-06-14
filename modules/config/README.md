@@ -1,10 +1,10 @@
 ## Config
 
-Terraform module that configures a multitude of [Opsgenie resources](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs). 
+Terraform module that configures a multitude of [Opsgenie resources](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs).
 Many resources have cross-resource dependencies, which may be simpler to handle within a single module in certain cases, such as using YAML configurations.
 
-This module is designed to accept an input configuration map. 
-One nice way of handling this is by passing resource definitions from a YAML configuration file. 
+This module is designed to accept an input configuration map.
+One nice way of handling this is by passing resource definitions from a YAML configuration file.
 
 See below for details & examples.
 
@@ -148,6 +148,22 @@ users:
 ```
 
 
+### `existing_schedules.yaml`
+
+```yaml
+existing_schedules:
+- acme.default
+```
+
+
+### `existing_teams.yaml`
+
+```yaml
+existing_teams:
+- acme
+```
+
+
 ### `existing_users.yaml`
 
 ```yaml
@@ -228,6 +244,8 @@ module "opsgenie" {
 | `alert_policies`            | `name` and `id` of each alert policy        |
 | `api_integrations`          | `name` and `id` of each API integration     |
 | `escalations`               | `name` and `id` of each escalation          |
+| `existing_schedules`        | `name` and `id` of each existing schedule   |
+| `existing_teams`            | `name` and `id` of each existing team       |
 | `existing_users`            | `username` and `id` of each existing user   |
 | `notification_policies`     | `name` and `id` of each notification policy |
 | `schedules`                 | `name` and `id` of each schedules           |
